@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, A } from "@solidjs/router";
 import favicon from "./assets/favicon.jpg";
 import reactIcon from "./assets/react.svg";
 import viteIcon from "./assets/vite.svg";
@@ -7,19 +7,19 @@ import heart from "./assets/heart.svg";
 const Layout = () => (
 	<>
 		<header>
-			<Link to="/">
+			<A href="/">
 				<img
 					src={favicon}
 					alt="En soi m'aime"
 				/>
 				En soi m'aime
-			</Link>
+			</A>
 			<nav>
 				<ul>
 					<li>
-						<Link to={"/"}>
+						<A href={"/"}>
 							Accueil
-						</Link>
+						</A>
 					</li>
 				</ul>
 			</nav>
@@ -31,12 +31,12 @@ const Layout = () => (
 
 		<footer>
 			<div>
-				Made with <Link to="https://reactjs.org"><img src={reactIcon} alt="Reactjs" /></Link>
-				, <Link to="https://vitejs.org"><img src={viteIcon} alt="Vitejs" /></Link>
+				Made with <A href="https://reactjs.org"><img src={reactIcon} alt="Reactjs" /></A>
+				, <A href="https://vitejs.org"><img src={viteIcon} alt="Vitejs" /></A>
 				, and <img src={heart} alt="love" />
 			</div>
 			<div>
-				Created by <Link to="https://dindin.ch">dindin|nibnib</Link>
+				Created by <A href="https://dindin.ch">dindin|nibnib</A>
 			</div>
 			<div>
 				&copy; en soi m'aime, 2022-2022

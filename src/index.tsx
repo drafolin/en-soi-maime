@@ -1,14 +1,24 @@
-import LoremIpsum from "react-lorem-ipsum";
+/* @refresh reload */
+import { render } from 'solid-js/web';
+import { Router, Route, Routes } from '@solidjs/router';
 
-const Index = () => {
-	return (
-		<>
-			<h1>En soi m'aime</h1>
-			<LoremIpsum
-				p={12}
-			/>
-		</>
-	);
-};
+import './index.scss';
+import Index from "./root";
+import Layout from "./layout";
 
-export default Index;
+render(() =>
+	<Router>
+		<Routes>
+			<Route
+				element={Layout}
+				path="/"
+			>
+				<Route
+					element={Index}
+					path="/"
+				/>
+			</Route>
+		</Routes>
+	</Router>,
+	document.getElementById('root') as HTMLElement
+);
