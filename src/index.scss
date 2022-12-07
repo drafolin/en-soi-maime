@@ -1,11 +1,27 @@
 $accent: #f6ddc7;
 $secondary: #7dd6d4;
+$headerHeight: 50px;
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
+  background-color: $accent;
+
   #root {
-    background-color: $accent;
-    height: 100vh;
-    width: 100vw;
+    header {
+      position: fixed;
+      width: 100vw;
+      padding: 10px;
+      height: $headerHeight;
+    }
+
+    main {
+      padding-top: $headerHeight;
+      height: 100vh;
+      width: 100vw;
+    }
   }
 }
