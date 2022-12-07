@@ -1,6 +1,12 @@
-$accent: #f6ddc7;
+/*
+https://coolors.co/f6ddc7-f34213-7dd6d4-000000
+*/
+$background: #f6ddc7;
+$accent: #f34213;
 $secondary: #7dd6d4;
-$headerHeight: 50px;
+
+$headerHeight: 80px;
+$sansserif: "Bahnschrift", "Helvetica", "Arial", sans-serif;
 
 * {
   box-sizing: border-box;
@@ -8,20 +14,61 @@ $headerHeight: 50px;
 
 body {
   margin: 0;
-  background-color: $accent;
+  background-color: $background;
+  font-family: $sansserif;
+
+  a {
+    text-decoration: none;
+    transition: all 300ms ease-in-out;
+    color: $accent;
+
+    &:hover {
+      color: $secondary;
+    }
+  }
 
   #root {
+    margin: auto;
+
     header {
       position: fixed;
       width: 100vw;
       padding: 10px;
       height: $headerHeight;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      box-shadow: 0 0 10px 5px #000;
+
+      > a {
+        display: flex;
+        align-items: center;
+
+        img {
+          height: 4rem;
+          border-radius: 100%;
+          margin: 10px;
+        }
+      }
+
+      nav {
+        ul {
+          list-style: none;
+          display: flex;
+          align-items: center;
+          padding: 0;
+          margin: 0;
+          height: 100%;
+        }
+      }
     }
 
     main {
-      padding-top: $headerHeight;
+      padding-top: $headerHeight + 10px;
       height: 100vh;
       width: 100vw;
+      max-width: 800px;
+      margin: auto;
     }
   }
 }
