@@ -1,0 +1,11 @@
+$accent: #f6ddc7;
+$secondary: #7dd6d4;
+
+body {
+  margin: 0;
+  #root {
+    background-color: $accent;
+    height: 100vh;
+    width: 100vw;
+  }
+}
