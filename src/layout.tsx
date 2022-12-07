@@ -1,6 +1,6 @@
 import { Outlet, A } from "@solidjs/router";
-import favicon from "./assets/favicon.jpg";
-import reactIcon from "./assets/react.svg";
+import favicon from "./assets/favicon.ico";
+import solidIcon from "./assets/solidjs.svg";
 import viteIcon from "./assets/vite.svg";
 import heart from "./assets/heart.svg";
 
@@ -33,7 +33,7 @@ const Layout = () => (
 
 		<footer>
 			<div>
-				Made with <A href="https://reactjs.org"><img src={reactIcon} alt="Reactjs" /></A>
+				Made with <A href="https://reactjs.org"><img src={solidIcon} alt="Reactjs" /></A>
 				, <A href="https://vitejs.org"><img src={viteIcon} alt="Vitejs" /></A>
 				, and <img src={heart} alt="love" />
 			</div>
