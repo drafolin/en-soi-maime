@@ -1,11 +1,90 @@
-$accent: #f6ddc7;
+/*
+https://coolors.co/f6ddc7-f34213-7dd6d4-000000
+*/
+$background: #f6ddc7;
+$accent: #f34213;
 $secondary: #7dd6d4;
+
+$headerHeight: 80px;
+$sansserif: "Bahnschrift", "Helvetica", "Arial", sans-serif;
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
+  background-color: $background;
+  font-family: $sansserif;
+
+  a {
+    text-decoration: none;
+    transition: all 300ms ease-in-out;
+    color: $accent;
+
+    &:hover {
+      color: $secondary;
+    }
+  }
+
   #root {
-    background-color: $accent;
-    height: 100vh;
-    width: 100vw;
+    margin: auto;
+
+    header {
+      position: fixed;
+      width: 100%;
+      padding: 10px;
+      height: $headerHeight;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      box-shadow: 0 0 10px 5px #000;
+      background-color: $background;
+
+      > a {
+        display: flex;
+        align-items: center;
+
+        img {
+          height: 4rem;
+          border-radius: 100%;
+          margin: 10px;
+        }
+      }
+
+      nav {
+        ul {
+          list-style: none;
+          display: flex;
+          align-items: center;
+          padding: 0;
+          margin: 0;
+          height: 100%;
+        }
+      }
+    }
+
+    main {
+      padding-top: $headerHeight + 10px;
+      min-height: 100vh;
+      width: 100vw;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    footer {
+      width: 100vw;
+      max-width: 800px;
+      margin: auto;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      img {
+        height: 1em;
+        width: auto;
+      }
+    }
   }
 }
