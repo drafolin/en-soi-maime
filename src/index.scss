@@ -32,13 +32,14 @@ body {
 
     header {
       position: fixed;
-      width: 100vw;
+      width: 100%;
       padding: 10px;
       height: $headerHeight;
       display: flex;
       justify-content: space-between;
       align-content: center;
       box-shadow: 0 0 10px 5px #000;
+      background-color: $background;
 
       > a {
         display: flex;
@@ -65,7 +66,7 @@ body {
 
     main {
       padding-top: $headerHeight + 10px;
-      height: 100vh;
+      min-height: 100vh;
       width: 100vw;
       max-width: 800px;
       margin: auto;
