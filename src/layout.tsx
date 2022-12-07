@@ -7,22 +7,24 @@ import heart from "./assets/heart.svg";
 const Layout = () => (
 	<>
 		<header>
-			<A href="/">
-				<img
-					src={favicon}
-					alt="En soi m'aime"
-				/>
-				En soi m'aime
-			</A>
-			<nav>
-				<ul>
-					<li>
-						<A href={"/"}>
-							Accueil
-						</A>
-					</li>
-				</ul>
-			</nav>
+			<div>
+				<A href="/">
+					<img
+						src={favicon}
+						alt="En soi m'aime"
+					/>
+					En soi m'aime
+				</A>
+				<nav>
+					<ul>
+						<li>
+							<A href={"/"}>
+								Accueil
+							</A>
+						</li>
+					</ul>
+				</nav>
+			</div>
 		</header>
 
 		<main>

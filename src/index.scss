@@ -1,9 +1,12 @@
 /*
 https://coolors.co/f6ddc7-f34213-7dd6d4-000000
 */
-$background: #f6ddc7;
-$accent: #f34213;
-$secondary: #7dd6d4;
+$theme: #ddb6a5;
+$accent: #743822;
+$secondary: #7dd6d3;
+$dark: #634739;
+$bright: #e9cfc4;
+$background: $theme;
 
 $headerHeight: 80px;
 $sansserif: "Bahnschrift", "Helvetica", "Arial", sans-serif;
@@ -34,33 +37,40 @@ body {
     header {
       position: fixed;
       width: 100%;
-      padding: 10px;
-      height: $headerHeight;
-      display: flex;
-      justify-content: space-between;
-      align-content: center;
       box-shadow: 0 0 10px 5px #000;
-      background-color: $background;
+      height: fit-content;
 
-      > a {
+      > div {
+        height: $headerHeight;
+        padding: 10px;
         display: flex;
-        align-items: center;
+        justify-content: space-between;
+        align-content: center;
+        background-color: $background;
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
 
-        img {
-          height: 4rem;
-          border-radius: 100%;
-          margin: 10px;
-        }
-      }
-
-      nav {
-        ul {
-          list-style: none;
+        > a {
           display: flex;
           align-items: center;
-          padding: 0;
-          margin: 0;
-          height: 100%;
+
+          img {
+            height: 4rem;
+            border-radius: 100%;
+            margin: 10px;
+          }
+        }
+
+        nav {
+          ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            height: 100%;
+          }
         }
       }
     }
