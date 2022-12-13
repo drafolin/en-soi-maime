@@ -1,19 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-
-const getLocalStorage = (key: string) => {
-	if (typeof window !== "undefined") {
-		return window.localStorage.getItem(key);
-	} else {
-		return null;
-	}
-};
-
-const setLocalStorage = (key: string, value: string) => {
-	if (typeof window !== "undefined") {
-		return window.localStorage.setItem(key, value);
-	}
-};
+import { getLocalStorage, setLocalStorage } from "../utils";
 
 const LoginPage = () => {
 	const [username, setUsername] = useState("");
@@ -22,24 +9,22 @@ const LoginPage = () => {
 
 	useEffect(() => {
 		setLocalStorage("connectionString", connectionString);
-		(
-			async () => {
-				if (
-					(await fetch(
-						"/api/admin",
-						{
-							body: JSON.stringify(
-								{
-									connStr: connectionString
-								}
-							),
-							method: "POST"
-						}
-					)).ok) {
-					console.log("connected");
-				};
+		fetch(
+			"/api/admin",
+			{
+				body: JSON.stringify(
+					{
+						connStr: connectionString
+					}
+				),
+				method: "POST"
 			}
-		)();
+		).then(res => res.ok)
+			.then(ok => {
+				if (ok) {
+					window.location.href = "/admin/panel";
+				}
+			});
 	}, [connectionString]);
 
 	return (

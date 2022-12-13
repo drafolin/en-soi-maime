@@ -3,8 +3,8 @@ import { MongoClient } from "mongodb";
 
 export const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 	if (req.method === "POST") {
-		const connectionString = JSON.parse(req.body).connStr;
-		let client = new MongoClient(connectionString);
+		const connStr = JSON.parse(req.body).connStr;
+		let client = new MongoClient(connStr);
 		try {
 			client = await client.connect();
 		} catch (err) {

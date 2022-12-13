@@ -11,12 +11,12 @@ interface Code {
 
 export const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 	if (req.method === "GET") {
-		const { code, connectionStr, toggle } = req.query;
+		const { code, connStr, toggle } = req.query;
 		if (!req.query.code || !req.query.connectionStr) {
 			return res.status(400).json({ message: "Bad request" });
 		}
 
-		let client = new MongoClient(<string>connectionStr);
+		let client = new MongoClient(<string>connStr);
 
 		try {
 			await client.connect();
@@ -57,12 +57,12 @@ export const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiR
 		client.close();
 		return res.status(418).json({ message: "Code not found" });
 	} else if (req.method === "POST") {
-		const { name, description, connectionStr } = req.body;
-		if (!name || !description || !connectionStr) {
+		const { name, description, connStr } = JSON.parse(req.body);
+		if (!name || !description || !connStr) {
 			return res.status(400).json({ message: "Bad request" });
 		}
 
-		let client = new MongoClient(<string>connectionStr);
+		let client = new MongoClient(<string>connStr);
 
 		try {
 			await client.connect();
@@ -81,23 +81,23 @@ export const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiR
 			});
 		} catch (err) {
 			client.close();
-			return res.status(500).json({ message: "Failed to create code" });
+			return res.status(500).json({ message: "Failed to create code\n\t@code.ts:84\n\nBase exception: " + err.message });
 		}
 
 		try {
 			await client.db("ensoimaime").collection<Code>("codes").updateOne(
 				{ _id: insertion.insertedId },
-				{ code: (insertion.insertedId.toHexString() + name + description).replace(/\s/g, "").slice(0, 32) }
+				{ $set: { code: (insertion.insertedId.toHexString() + name + description).replace(/\s/g, "").slice(0, 32) } }
 			);
 		} catch (err) {
 			client.close();
-			return res.status(500).json({ message: "Failed to create code" });
+			return res.status(500).json({ message: "Failed to create code\n\t@code.ts:94\n\nBase exception: " + err.message });
 		}
 
 		let code = await client.db("ensoimaime").collection<Code>("codes").findOne({ _id: insertion.insertedId });
 		if (!code) {
 			client.close();
-			return res.status(500).json({ message: "Failed to create code" });
+			return res.status(500).json({ message: "Failed to create code\n\t@code.ts:100" });
 		}
 
 		client.close();
@@ -107,3 +107,5 @@ export const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiR
 		return res.status(405).json({ message: "Method not allowed" });
 	}
 };
+
+export default handler;
